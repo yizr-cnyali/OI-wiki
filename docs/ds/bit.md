@@ -90,14 +90,14 @@ int getsum(int x) {  // a[1]……a[x]的和
 }
 ```
 
-## 区间加区间求和
+## 区间加 & 区间求和
 
 若维护序列 $a$ 的差分数组 $b$ ，此时我们对 $a$ 的一个前缀 $r$ 求和，即 $\sum_{i=1}^{r} a_i$ ，由差分数组定义得 $a_i=\sum_{j=1}^i b_j$ 
 
 进行推导
 
 $$
-\sum_{i=1}^{r} a_i\\=\sum_{i=1}^r\sum_{j=1}^i b_i\\=\sum_{i=1}^r b_i\times(r-i+1)
+\sum_{i=1}^{r} a_i\\=\sum_{i=1}^r\sum_{j=1}^i b_j\\=\sum_{i=1}^r b_i\times(r-i+1)
 \\=\sum_{i=1}^r b_i\times (r+1)-\sum_{i=1}^r b_i\times i
 $$
 
@@ -132,7 +132,7 @@ void add1(int l, int r, int v) {
 }
 
 long long getsum1(int l, int r) {
-  return (r + 1ll) * (getsum(t1, r) - getsum(t1, l - 1)) -
+  return (r + 1ll) * getsum(t1, r) - 1ll * l * getsum(t1, l - 1) -
          (getsum(t2, r) - getsum(t2, l - 1));
 }
 ```
@@ -183,8 +183,8 @@ int getsum(int k) {
 
 ## 例题
 
--   [树状数组 1：单点修改，区间查询](https://loj.ac/problem/130)
--   [树状数组 2：区间修改，单点查询](https://loj.ac/problem/131)
--   [树状数组 3：区间修改，区间查询](https://loj.ac/problem/132)
--   [二维树状数组 1：单点修改，区间查询](https://loj.ac/problem/133)
--   [二维树状数组 3：区间修改，区间查询](https://loj.ac/problem/135)
+-    [树状数组 1：单点修改，区间查询](https://loj.ac/problem/130) 
+-    [树状数组 2：区间修改，单点查询](https://loj.ac/problem/131) 
+-    [树状数组 3：区间修改，区间查询](https://loj.ac/problem/132) 
+-    [二维树状数组 1：单点修改，区间查询](https://loj.ac/problem/133) 
+-    [二维树状数组 3：区间修改，区间查询](https://loj.ac/problem/135) 

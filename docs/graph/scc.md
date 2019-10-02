@@ -1,6 +1,6 @@
 ## 简介
 
-在阅读下列内容之前，请务必了解[图论基础](/graph/basic)部分。
+在阅读下列内容之前，请务必了解 [图论基础](/graph/basic) 部分。
 
 强连通的定义是：有向图 G 强连通是指，G 中任意两个结点连通。
 
@@ -100,7 +100,7 @@ void tarjan(int u) {
 
 Kosaraju 算法依靠两次简单的 DFS 实现。
 
-第一次 DFS，选取任意顶点作为起点，遍历所有为访问过的顶点，并在回溯之前给顶点编号，也就是后序遍历。
+第一次 DFS，选取任意顶点作为起点，遍历所有未访问过的顶点，并在回溯之前给顶点编号，也就是后序遍历。
 
 第二次 DFS，对于反向后的图，以标号最大的顶点作为起点开始 DFS。这样遍历到的顶点集合就是一个强连通分量。对于所有未访问过的结点，选取标号最大的，重复上述过程。
 
@@ -115,7 +115,7 @@ void dfs1(int u) {
   vis[u] = true;
   for (int v : g[u])
     if (!vis[v]) dfs1(v);
-  s.push_back(v);
+  s.push_back(u);
 }
 
 void dfs2(int u) {
@@ -150,6 +150,6 @@ DAG 好啊，能拓扑排序了就能做很多事情了。
 
 ## 推荐题目
 
-[USACO Fall/HAOI 2006 受欢迎的牛](https://www.lydsy.com/JudgeOnline/problem.php?id=1051)
+ [USACO Fall/HAOI 2006 受欢迎的牛](https://loj.ac/problem/10091) 
 
-[POJ1236 Network of Schools](http://poj.org/problem?id=1236)
+ [POJ1236 Network of Schools](http://poj.org/problem?id=1236) 

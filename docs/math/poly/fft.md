@@ -1,16 +1,16 @@
 author: AndrewWayne, GavinZhengOI. ChungZH, henryrabbit, Xeonacid, sshwy, Yukimaikoriya
 
-（本页面部分内容转载自[桃酱的算法笔记](https://zhuanlan.zhihu.com/c_1005817911142838272)，原文戳[链接](https://zhuanlan.zhihu.com/p/41867199)，已获得作者授权）
+（本页面部分内容转载自 [桃酱的算法笔记](https://zhuanlan.zhihu.com/c_1005817911142838272) ，原文戳 [链接](https://zhuanlan.zhihu.com/p/41867199) ，已获得作者授权）
 
 一直想学 FFT，之前牛客的多校有一道组合数学就用 FFT 写的，而且当时还傻乎乎的用唯一分解定理，但是自己好久没静下心学什么了，而且自己的数学功底又不好，导致一直学不会。看了很多人的博客也没看明白，尤其是原根。在我看了几十篇博客之后终于看懂了……所以想写一篇能够让大多数人都看得懂的教程。花费时间 3 天终于写完啦~~~~\~~
 
 另外，本文 FFT 部分的代码实现全部参考 kuangbin 的模板（2018.7 更新）资源地址如下
 
-<https://download.csdn.net/download/qq_37136305/10562410>
+ <https://download.csdn.net/download/qq_37136305/10562410> 
 
 NTT 部分代码参考 CSDN 上的模板代码附网址，感谢博主！
 
-你搜索这个关键词就已经知道这一是个数学的东西了。只想学会用很简单，但是这远远不够。所以在看这个博客之前应该先学一下[复数](/math/complex)的基本知识。
+你搜索这个关键词就已经知道这一是个数学的东西了。只想学会用很简单，但是这远远不够。所以在看这个博客之前应该先学一下 [复数](/math/complex) 的基本知识。
 
 好了下面进入正文。
 
@@ -46,7 +46,7 @@ $$
 
 FFT，即为快速傅氏变换，是离散傅氏变换的快速算法，它是根据离散傅氏变换的奇、偶、虚、实等特性，对离散傅立叶变换的算法进行改进获得的。它对傅氏变换的理论并没有新的发现，但是对于在计算机系统或者说数字系统中应用离散傅立叶变换，可以说是进了一大步。——360 百科
 
-如果上一个例子用朴素算法太慢啦！所以我们要用 FFT 进行优化，复杂度会降为 $O(nlogn)$ 
+如果上一个例子用朴素算法太慢啦！所以我们要用 FFT 进行优化，复杂度会降为 $O(n\log n)$ 
 
 ### 多项式的系数表示法与点值表示法
 
@@ -61,31 +61,13 @@ $$
 点值表示法是把这个多项式看成一个函数，从上面选取 $n+1$ 个点，从而利用这 $n+1$ 个点来唯一的表示这个函数。为什么用 $n+1$ 个点就能唯一的表示这个函数了呢？想一下高斯消元法，两点确定一条直线。再来一个点，能确定这个直线中的另一个参数，那么也就是说 $n+1$ 个点能确定 $n$ 个参数（不考虑倍数点之类的没用点）。如下：
 
 $$
-f_1(x) = y_1 = a_0 + a_1x_1+a_2x_1^2+a_3x_1^3+ \cdots + a_nx_1^n
-$$
-
-$$
-f_2(x) = y_2 = a_0 + a_1x_2+a_2x_2^2+a_3x_2^3+ \cdots + a_nx_2^n
-$$
-
-$$
-f_3(x) = y_3 = a_0 + a_1x_3+a_2x_3^2+a_3x_3^3+ \cdots + a_nx_3^n
-$$
-
-$$
-f_4(x) = y_4 = a_0 + a_1x_4+a_2x_4^2+a_3x_4^3+ \cdots + a_nx_4^n
-$$
-
-$$
-f_5(x) = y_5 = a_0 + a_1x_5+a_2x_5^2+a_3x_5^3+ \cdots + a_nx_5^n
-$$
-
-$$
-\cdots
-$$
-
-$$
-f_n(x) = y_n = a_0 + a_1x_m+a_2x_m^2+a_3x_m^3+ \cdots + a_nx_m^n
+\begin{array}{c}
+f_1(x) = y_1 = a_0 + a_1x_1+a_2x_1^2+a_3x_1^3+ \cdots + a_nx_1^n\\
+f_2(x) = y_2 = a_0 + a_1x_2+a_2x_2^2+a_3x_2^3+ \cdots + a_nx_2^n\\
+f_3(x) = y_3 = a_0 + a_1x_3+a_2x_3^2+a_3x_3^3+ \cdots + a_nx_3^n\\
+\vdots\\
+f_{n+1}(x) = y_{n+1} = a_0 + a_1x_{n+1}+a_2x_{n+1}^2+a_3x_{n+1}^3+ \cdots + a_nx_{n+1}^n
+\end{array}
 $$
 
 一个非常通俗易懂的解释：
@@ -405,16 +387,15 @@ void fft(Complex y[], int len, int on) {
 }
 ```
 
-好了现在附上全部代码（[HDU 1402](http://acm.hdu.edu.cn/showproblem.php?pid=1402)），序言说过代码来自 kuangbin 的模板~~~~~
+好了现在附上全部代码（ [HDU 1402](http://acm.hdu.edu.cn/showproblem.php?pid=1402) ），序言说过代码来自 kuangbin 的模板~~~~~
 
 ??? "FFT"
-
     ```cpp
     #include <cmath>
     #include <cstdio>
     #include <cstring>
     #include <iostream>
-
+    
     const double PI = acos(-1.0);
     struct Complex {
       double x, y;
@@ -433,10 +414,10 @@ void fft(Complex y[], int len, int on) {
       }
     };
     /*
-    * 进行 FFT 和 IFFT 前的反置变换
-    * 位置 i 和 i 的二进制反转后的位置互换
-    *len 必须为 2 的幂
-    */
+     * 进行 FFT 和 IFFT 前的反置变换
+     * 位置 i 和 i 的二进制反转后的位置互换
+     *len 必须为 2 的幂
+     */
     void change(Complex y[], int len) {
       int i, j, k;
       for (int i = 1, j = len / 2; i < len - 1; i++) {
@@ -452,10 +433,10 @@ void fft(Complex y[], int len, int on) {
       }
     }
     /*
-    * 做 FFT
-    *len 必须是 2^k 形式
-    *on == 1 时是 DFT，on == -1 时是 IDFT
-    */
+     * 做 FFT
+     *len 必须是 2^k 形式
+     *on == 1 时是 DFT，on == -1 时是 IDFT
+     */
     void fft(Complex y[], int len, int on) {
       change(y, len);
       for (int h = 2; h <= len; h <<= 1) {
@@ -477,12 +458,12 @@ void fft(Complex y[], int len, int on) {
         }
       }
     }
-
+    
     const int MAXN = 200020;
     Complex x1[MAXN], x2[MAXN];
     char str1[MAXN / 2], str2[MAXN / 2];
     int sum[MAXN];
-
+    
     int main() {
       while (scanf("%s%s", str1, str2) == 2) {
         int len1 = strlen(str1);
@@ -519,4 +500,4 @@ void fft(Complex y[], int len, int on) {
 
 ## 算竞选手看过来~ NTT（数论优化的快速傅里叶变换）
 
-戳～[NTT](/math/poly/ntt)
+戳～ [NTT](/math/poly/ntt) 
