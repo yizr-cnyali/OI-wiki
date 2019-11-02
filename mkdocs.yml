@@ -46,6 +46,7 @@ nav:
         - Validator: intro/testlib/validator.md
         - Interactor: intro/testlib/interactor.md
         - Checker: intro/testlib/checker.md
+      - Polygon: intro/polygon.md
       - OJ 工具: intro/oj-tool.md
       - LaTeX 入门: intro/latex.md
     - Docker 部署: intro/docker-deploy.md
@@ -234,6 +235,7 @@ nav:
         - 高精度概述: math/bignum.md
       - 分段打表: math/dictionary.md
     - 斐波那契数列: math/fibonacci.md
+    - 常系数齐次线性递推: math/linear-recurrence.md
   - 数据结构:
     - 数据结构部分简介: ds/index.md
     - 栈: ds/stack.md
@@ -344,6 +346,7 @@ nav:
     - 半平面交: geometry/half-plane.md
     - 平面最近点对: geometry/nearest-points.md
     - 随机增量法: geometry/random-incremental.md
+    - 反演变换: geometry/inverse.md
     - 计算几何杂项: geometry/misc.md
   - 杂项:
     - 杂项简介: misc/index.md
@@ -370,6 +373,7 @@ nav:
     - 在一台机器上规划任务: misc/job-order.md
   - 专题:
     - RMQ: topic/rmq.md
+    - 出题: topic/problemsetting.md
 
 # Theme
 theme:
