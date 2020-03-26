@@ -19,6 +19,7 @@
 
 如果要保证复杂度正确，必须保证数据随机。
 证明在 [此](http://codeforces.com/blog/entry/56135?#comment-398940) 。
+补充一个更详细的严格证明： [看这里](https://zhuanlan.zhihu.com/p/102786071) 。对于 add，assign 和 sum 操作，用 set 实现的珂朵莉树的复杂度为 $O(n \log \log n)$ ，而用链表实现的复杂度为 $O(n \log n)$ 。
 
 ## 正文
 
@@ -34,6 +35,8 @@ struct Node_t {
 ```
 
 其中， `int v` 是你自己指定的附加数据。
+
+注意，其中的 `mutable` 关键字如果不加的话，在修改时会导致 CE。 `mutable` 的意思是“可变的”，让我们可以在后面的操作中修改 `v` 的值。因为在 C++ 中，mutable 是为了突破 const 的限制而设置的。被 mutable 修饰的变量（mutable 只能用于修饰类中的非静态数据成员），将永远处于可变的状态，即使在一个 const 函数中。
 
 然后，我们定义一个 `set<Node_t> odt;` 来维护这些结点。
 为简化代码，可以 `typedef set<Node_t>::iterator iter` ，当然在题目支持 C++11 时也可以使用 `auto` 。
